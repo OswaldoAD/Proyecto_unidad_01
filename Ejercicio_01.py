@@ -51,6 +51,33 @@ print("Recuerda que primero tienes que cargar un libro en la opcion 1: ")
 opcion = input("")
 
 import csv
+def fun_1(archicsv):
+    with open (archicsv) as f:
+            
+            lis_id=[]
+            lis_titulo=[]
+            lis_genero=[]
+            lis_isbn=[]
+            lis_editorial=[]
+            lis_autor=[]
+            prueba=[]
+            reader=csv.reader(f)
+            
+            for j in reader:
+                id_5,titulo_5,genero_5,isbn_5,editorial_5,autor_5 = j
+                lis_id.append(id_5)
+                lis_titulo.append(titulo_5)
+                lis_genero.append(genero_5)
+                lis_isbn.append(isbn_5)
+                lis_editorial.append(editorial_5)
+                lis_autor.append(autor_5)
+            lis_id.pop(0)
+            lis_titulo.pop(0)
+            lis_genero.pop(0)
+            lis_isbn.pop(0)
+            lis_editorial.pop(0)
+            lis_autor.pop(0)
+            return lis_id, lis_titulo,lis_genero,lis_isbn,lis_editorial,lis_autor
 
 if opcion == "1":
     ruta = input("Ingrese la ruta del archivo a cargar: ")
@@ -129,6 +156,45 @@ if opcion == "1":
                     archivo = csv.writer(f,delimiter=',')
                     archivo.writerow(libro)
                     f.close()
+            continue
+        
+        elif opcion == "5":
+            print("\nPrefieres buscar el libro por ISBN o por titulo?")
+            var_5_pala1=str(input("Ingresar ISBN o Titulo:"))
+            var_5_pala2=var_5_pala1.lower()
+            while var_5_pala2 not in ("isbn".lower(), "titulo".lower()):
+                var_5_pala1=str(input("Solo puedes ingresar ISBN o Titulo:"))
+                var_5_pala2=var_5_pala1.lower()
+
+            if var_5_pala2 =="isbn":
+                pola=fun_1(ruta_archivo)
+                isbn_5=[ int(p) for p in pola[3] if p!="larry.ñp"]
+                prueba_5=[]
+                for i in range(len(isbn_5)):
+                    if isbn_5[i] not in prueba_5:
+                        prueba_5.append(isbn_5[i])
+                print(f"Como ayuda te mostramos todos los ISBN{prueba_5}")
+                n_is=int(input("Ingresar numero de ISBN:"))
+                for k in isbn_5:
+                    if k==n_is:
+                        pos_5=isbn_5.index(k)
+                        print(f"Id:{pola[0][pos_5]},Titulo:{pola[1][pos_5]},Genero:{pola[2][pos_5]},Editorial:{pola[4][pos_5]},Autor:{pola[5][pos_5]}")
+                        isbn_5[pos_5]=str("Nada")
+
+            elif var_5_pala2 =="titulo":
+                pola=fun_1(ruta_archivo)
+                isbn_5=[ str(p) for p in pola[1] if p!=" "]
+                prueba_5=[]
+                for i in range(len(isbn_5)):
+                    if isbn_5[i] not in prueba_5:
+                        prueba_5.append(isbn_5[i])
+                print(f"Como ayuda te mostramos todos los titulos{prueba_5}")
+                n_is=str(input("Ingresar titulo:"))
+                for k in isbn_5:
+                    if k==n_is:
+                        pos_5=isbn_5.index(k)
+                        print(f"Id:{pola[0][pos_5]},Genero:{pola[2][pos_5]},ISBN::{pola[3][pos_5]},Editorial:{pola[4][pos_5]},Autor:{pola[5][pos_5]}")
+                        isbn_5[pos_5]=str("Nada")
             continue
 
         
