@@ -97,3 +97,37 @@ if opcion == "1":
                 archivo.writerow(datos)
                 f.close()
             continue
+
+        elif opcion == "4":
+            with open(ruta_archivo) as f:
+                archivo =csv.reader(f)
+                datos =[]
+                for i in archivo:
+                    datos.append(i)
+                for j in datos:
+                    print(f'- {datos.index(j)} - {j[1]}')
+                f.close()
+            
+            eliminar = int(input("Ingrese el numero que le corresponde al libro, para eliminar: "))
+            datos.pop(eliminar)
+            print(datos)
+            
+            for i in datos[0:1]:
+                libro = []
+                for j in i:
+                    libro.append(j)
+                with open(ruta_archivo,'w',newline ='') as f:
+                    archivo = csv.writer(f,delimiter=',')
+                    archivo.writerow(libro)
+                    f.close()
+            for i in datos[1:]:
+                libro=[]
+                for j in i:
+                    libro.append(j)
+                with open(ruta_archivo,'a',newline ='') as f:
+                    archivo = csv.writer(f,delimiter=',')
+                    archivo.writerow(libro)
+                    f.close()
+            continue
+
+        
