@@ -52,3 +52,22 @@ opcion = input("")
 
 import csv
 
+if opcion == "1":
+    ruta = input("Ingrese la ruta del archivo a cargar: ")
+    nombre = input("Ingrese el nombre del archivo segun formato(nombre.csv o nombre.txt: ")
+    ruta_archivo = ruta+"\\"+nombre
+    f = open(ruta_archivo)
+    reader =csv.reader(f)
+    for row in reader:
+        print (row)
+    f.close()
+    print("Archivo cargado correctamente...")
+
+    inicio = True
+    while inicio == True:
+        print("")
+        print ("Opcion 1: Leer archivo de disco duro(.txt o csv)\n""Opción 2: Listar libros\n""Opción 3: Agregar libro\n"
+            "Opción 4: Eliminar libro\n""Opción 5: Buscar libro por ISBN o por título\n""Opción 6: Ordenar libros por título\n"
+            "Opción 7: Buscar libros por autor, editorial o género\n""Opción 8: Buscar libros por número de autores\n"
+            "Opción 9: Editar o actualizar datos de un libro\n""Opción 10: Guardar libros en archivo de disco duro (.txt o csv)\n") 
+        opcion = input("Elige una opcion, ingresa su número u otro caracter para salir.\n")  
