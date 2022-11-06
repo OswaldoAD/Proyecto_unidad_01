@@ -71,3 +71,14 @@ if opcion == "1":
             "Opción 7: Buscar libros por autor, editorial o género\n""Opción 8: Buscar libros por número de autores\n"
             "Opción 9: Editar o actualizar datos de un libro\n""Opción 10: Guardar libros en archivo de disco duro (.txt o csv)\n") 
         opcion = input("Elige una opcion, ingresa su número u otro caracter para salir.\n")  
+
+        if opcion == "2":
+                    with open(ruta_archivo) as f:
+                        reader =csv.reader(f)
+                        titulo= []
+                        for i in reader:
+                            titulo.append(i)
+                        titulo.pop(0)
+                        for j in titulo:
+                                print(f'- {j[0:]}')
+                    continue
