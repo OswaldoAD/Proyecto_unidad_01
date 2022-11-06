@@ -73,12 +73,12 @@ if opcion == "1":
         opcion = input("Elige una opcion, ingresa su número u otro caracter para salir.\n")  
 
         if opcion == "2":
-                    with open(ruta_archivo) as f:
-                        reader =csv.reader(f)
-                        titulo= []
-                        for i in reader:
-                            titulo.append(i)
-                        titulo.pop(0)
-                        for j in titulo:
-                                print(f'- {j[0:]}')
-                    continue
+            with open(ruta_archivo) as f:
+                reader =csv.reader(f)
+                titulo= []
+                for i in reader:
+                    titulo.append(i)
+                titulo.pop(0)
+                for j in titulo:
+                        print(f'- {j[0:]}')
+                continue
