@@ -197,4 +197,19 @@ if opcion == "1":
                         isbn_5[pos_5]=str("Nada")
             continue
 
-        
+        elif opcion == "6":
+            file = open(ruta_archivo)
+            def list_to_dict(list):
+                return {"id":list[0], "titulo":list[1], "genero":list[2], "ISBN":list[3], "autor(es)":list[4]}
+            list = []
+            for line in file.readlines():
+                arr=line.replace("\n", "").split(",")
+                dict=list_to_dict(arr)
+                list.append(dict)
+            list.pop(0)
+
+            list=sorted(list,key=lambda x: x["titulo"])
+            for dict in list:
+                print(dict)
+
+            continue        
