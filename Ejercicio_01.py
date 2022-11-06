@@ -73,12 +73,27 @@ if opcion == "1":
         opcion = input("Elige una opcion, ingresa su número u otro caracter para salir.\n")  
 
         if opcion == "2":
-                    with open(ruta_archivo) as f:
-                        reader =csv.reader(f)
-                        titulo= []
-                        for i in reader:
-                            titulo.append(i)
-                        titulo.pop(0)
-                        for j in titulo:
-                                print(f'- {j[0:]}')
-                    continue
+            with open(ruta_archivo) as f:
+                reader =csv.reader(f)
+                titulo= []
+                for i in reader:
+                    titulo.append(i)
+                titulo.pop(0)
+                for j in titulo:
+                        print(f'- {j[0:]}')
+            continue
+        
+        elif opcion == "3":
+            id =  input("Ingrese id: ")
+            titulo = input("Ingrese el título: ")
+            genero = input("Ingrese el genero: ")
+            isbn = input ("Ingrese el ISBN: ")
+            editorial = input("Ingrese la editorial: ")
+            autores = input ("Ingrese el autor(nombre,apellidos): ")
+            datos=[id,titulo,genero,isbn,editorial,autores]
+
+            with open(ruta_archivo,'a',newline ='') as f:
+                archivo = csv.writer(f, delimiter=',')
+                archivo.writerow(datos)
+                f.close()
+            continue
