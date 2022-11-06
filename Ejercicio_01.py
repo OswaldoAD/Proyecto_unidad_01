@@ -23,5 +23,32 @@ Nota: listar libros involucra: título, género, ISBN, editorial y autor(es)
 
 '''
 
+class libro:
+    def __init__(self, id:int, titulo:str, genero:str, ISBN:int, editorial:str, autores:str) -> None:
+        self._id = id
+        self._titulo = titulo
+        self._genero = genero
+        self._ISBN = ISBN
+        self._editorial = editorial
+        self._autor = autores
 
+    def __del__(self):
+        return "objeto eliminado"
+
+
+print("Registro y buscador de libros")
+print("=============================")
+
+
+print("")
+print ("Opcion 1: Leer archivo de disco duro(.txt o csv)\n""Opción 2: Listar libros\n""Opción 3: Agregar libro\n"
+    "Opción 4: Eliminar libro\n""Opción 5: Buscar libro por ISBN o por título\n""Opción 6: Ordenar libros por título\n"
+    "Opción 7: Buscar libros por autor, editorial o género\n""Opción 8: Buscar libros por número de autores\n"
+    "Opción 9: Editar o actualizar datos de un libro\n""Opción 10: Guardar libros en archivo de disco duro (.txt o csv)") 
+print("")
+print("Elige una opcion e ingresa su número...\n")
+print("Recuerda que primero tienes que cargar un libro en la opcion 1: ")
+opcion = input("")
+
+import csv
 
