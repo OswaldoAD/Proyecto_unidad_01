@@ -212,4 +212,55 @@ if opcion == "1":
             for dict in list:
                 print(dict)
 
-            continue        
+            continue
+
+        elif opcion == "7":
+            print("\nPrefieres buscar el libro por autor, editorial o genero?")
+            var_6_pala1=str(input("Ingrese autor, editorial o genero:"))
+            var_6_pala2=var_6_pala1.lower()
+            while var_6_pala2 not in ("genero".lower(), "editorial".lower(),"autor".lower()):
+                var_6_pala1=str(input("Solo puedes ingresar ISBN o Titulo:"))
+                var_6_pala2=var_6_pala1.lower()
+            if var_6_pala2 =="genero":
+                polo=fun_1(ruta_archivo)
+                isbn_n_7=[ str(p) for p in polo[2] if p!=" "]
+                prueba_7=[]
+                for i in range(len(isbn_n_7)):
+                    if isbn_n_7[i] not in prueba_7:
+                        prueba_7.append(isbn_n_7[i])
+                print(f"Como ayuda te mostramos todos los generos: {prueba_7}")
+                n_is_7=str(input("Ingresar genero:"))
+                for k in isbn_n_7:
+                    if k==n_is_7:
+                        pos_7=isbn_n_7.index(k)
+                        print(f"Id:{polo[0][pos_7]},Titulo:{polo[1][pos_7]},ISBN:{polo[3][pos_7]},Editorial:{polo[4][pos_7]},Autor:{polo[5][pos_7]}")
+                        isbn_n_7[pos_7]=str("Nada")
+            elif var_6_pala2 =="editorial":
+                polo=fun_1(ruta_archivo)
+                isbn_n_7=[ str(p) for p in polo[4] if p!=" "]
+                prueba_7=[]
+                for i in range(len(isbn_n_7)):
+                    if isbn_n_7[i] not in prueba_7:
+                        prueba_7.append(isbn_n_7[i])
+                print(f"Como ayuda te mostramos todos las editoriales: {prueba_7}")
+                n_is_7=str(input("Ingresar editorial:"))
+                for k in isbn_n_7:
+                    if k==n_is_7:
+                        pos_7=isbn_n_7.index(k)
+                        print(f"Id:{polo[0][pos_7]},Titulo:{polo[1][pos_7]},Genero:{polo[2][pos_7]},ISBN:{polo[3][pos_7]},Autor:{polo[5][pos_7]}")
+                        isbn_n_7[pos_7]=str("Nada")
+            elif var_6_pala2 =="autor":
+                polo=fun_1(ruta_archivo)
+                isbn_n_7=[ str(p) for p in polo[5] if p!=" "]
+                prueba_7=[]
+                for i in range(len(isbn_n_7)):
+                    if isbn_n_7[i] not in prueba_7:
+                        prueba_7.append(isbn_n_7[i])
+                print(f"Como ayuda te mostramos todos los autores o autores: {prueba_7}")
+                n_is_7=str(input("Ingresar autor:"))
+                for k in isbn_n_7:
+                    if k==n_is_7:
+                        pos_7=isbn_n_7.index(k)
+                        print(f"Id:{polo[0][pos_7]},Titulo:{polo[1][pos_7]},Genero:{polo[2][pos_7]},ISBN:{polo[3][pos_7]},Editorial:{polo[4][pos_7]}")
+                        isbn_n_7[pos_7]=str("Nada")        
+
