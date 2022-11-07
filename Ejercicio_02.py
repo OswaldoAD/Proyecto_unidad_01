@@ -141,4 +141,27 @@ elif opcion=="4":
         list_pokeh.pop(l)
         lista_url.pop(0)
 
-        
+elif opcion=="5":
+    
+    jul=fun_pro2("https://pokeapi.co/api/v2/type/",'results',"pokemon")
+    list_pokeg=[]
+    #print(jul)
+    for j in range (len(jul)):
+        list_pokeg.append(jul[j]["pokemon"]["name"])
+    #print(list_pokeg)
+
+    for i in range(len(list_pokeg)):
+        habi="https://pokeapi.co/api/v2/pokemon/"+ list_pokeg[i]
+        poke_h=requests.get(habi)
+        dato_h=poke_h.json()
+        habi_h=dato_h["abilities"]
+        list_pokeh=[]
+        for l in range (len(habi_h)):
+            list_pokeh.append(habi_h[l]["ability"]["name"])
+        habi_url=dato_h["sprites"]
+        lista_url=[]
+        #for po in range (len(habi_url)):
+        lista_url.append(habi_url["front_default"])
+        print(f"Pokemon:{list_pokeg[i]},Habilidades:{list_pokeh},URL de la imagen:{lista_url}")
+        list_pokeh.pop(l)
+        lista_url.pop(0)        
