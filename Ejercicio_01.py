@@ -268,8 +268,8 @@ if opcion == "1":
             with open(ruta_archivo)as f:
                 archivo = csv.reader(f)
                 datos= []
-            for i in archivo:
-                datos.append(i)
+                for i in archivo:
+                    datos.append(i)
 
             numero_autores = input("Ingresa el numero de autores: ")
             
