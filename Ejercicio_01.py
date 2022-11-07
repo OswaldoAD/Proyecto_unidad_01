@@ -290,9 +290,9 @@ if opcion == "1":
                     if count == 0:
                         print("No se encontro resultados.")
 
-            elif numero_autores == "1":
-                for j in datos[1:]:
-                    if j[5].count(",")==0: 
-                        print(j)
+                elif numero_autores == "1":
+                    for j in datos[1:]:
+                        if j[5].count(",")==0: 
+                            print(j)
 
 
