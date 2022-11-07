@@ -262,5 +262,37 @@ if opcion == "1":
                     if k==n_is_7:
                         pos_7=isbn_n_7.index(k)
                         print(f"Id:{polo[0][pos_7]},Titulo:{polo[1][pos_7]},Genero:{polo[2][pos_7]},ISBN:{polo[3][pos_7]},Editorial:{polo[4][pos_7]}")
-                        isbn_n_7[pos_7]=str("Nada")        
+                        isbn_n_7[pos_7]=str("Nada")
+                        
+            elif opcion == "8":
+                with open(ruta_archivo)as f:
+                    archivo = csv.reader(f)
+                    datos= []
+                for i in archivo:
+                    datos.append(i)
+
+                numero_autores = input("Ingresa el numero de autores: ")
+            
+                if numero_autores == "3":
+                    for j in datos:
+                        count = 0
+                        if j[5].count(",")==2:
+                            print(j)
+                            count+=1
+                    if count == 0:
+                        print("No se encontro resultados.")
+                elif numero_autores == "2":
+                    for j in datos:
+                        count = 0
+                        if j[5].count(",")==1: 
+                            print(j)
+                            count+=1
+                    if count == 0:
+                        print("No se encontro resultados.")
+
+            elif numero_autores == "1":
+                for j in datos[1:]:
+                    if j[5].count(",")==0: 
+                        print(j)
+
 
