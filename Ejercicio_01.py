@@ -264,35 +264,72 @@ if opcion == "1":
                         print(f"Id:{polo[0][pos_7]},Titulo:{polo[1][pos_7]},Genero:{polo[2][pos_7]},ISBN:{polo[3][pos_7]},Editorial:{polo[4][pos_7]}")
                         isbn_n_7[pos_7]=str("Nada")
                         
-            elif opcion == "8":
-                with open(ruta_archivo)as f:
-                    archivo = csv.reader(f)
-                    datos= []
+        elif opcion == "8":
+            with open(ruta_archivo)as f:
+                archivo = csv.reader(f)
+                datos= []
+            for i in archivo:
+                datos.append(i)
+
+            numero_autores = input("Ingresa el numero de autores: ")
+            
+            if numero_autores == "3":
+                for j in datos:
+                    count = 0
+                    if j[5].count(",")==2:
+                        print(j)
+                        count+=1
+                if count == 0:
+                    print("No se encontro resultados.")
+            elif numero_autores == "2":
+                for j in datos:
+                    count = 0
+                    if j[5].count(",")==1: 
+                        print(j)
+                        count+=1
+                if count == 0:
+                    print("No se encontro resultados.")
+
+            elif numero_autores == "1":
+                for j in datos[1:]:
+                    if j[5].count(",")==0: 
+                        print(j)
+
+        elif opcion == "9":
+            with open(ruta_archivo) as f:
+                archivo =csv.reader(f)
+                datos =[]
                 for i in archivo:
                     datos.append(i)
+                
+                for j in datos:
+                    print(f'- {datos.index(j)} - {j[1]}')
+        
+                modificar = int(input("Ingrese el numero del libro a modificar: "))
 
-                numero_autores = input("Ingresa el numero de autores: ")
-            
-                if numero_autores == "3":
-                    for j in datos:
-                        count = 0
-                        if j[5].count(",")==2:
-                            print(j)
-                            count+=1
-                    if count == 0:
-                        print("No se encontro resultados.")
-                elif numero_autores == "2":
-                    for j in datos:
-                        count = 0
-                        if j[5].count(",")==1: 
-                            print(j)
-                            count+=1
-                    if count == 0:
-                        print("No se encontro resultados.")
+                for cabecera in datos[0]:
+                    print(f'- {datos[0].index(cabecera)} - {cabecera}')
 
-                elif numero_autores == "1":
-                    for j in datos[1:]:
-                        if j[5].count(",")==0: 
-                            print(j)
+                modificar_2 = int(input(f'Ingrese el numero del parametro a modificar: '))
 
+                cambio = input("Ingrese la modificacion : ")
+                datos [modificar][modificar_2]= cambio
 
+                print(f'El cambio se realizo con exito: \n {datos[modificar]}')
+                
+                for i in datos[0:1]:
+                    libro = []
+                    for j in i:
+                        libro.append(j)
+                    with open(ruta_archivo,'w',newline ='') as f:
+                        archivo = csv.writer(f,delimiter=',')
+                        archivo.writerow(libro)
+                        f.close()
+                for i in datos[1:]:
+                    libro=[]
+                    for j in i:
+                        libro.append(j)
+                    with open(ruta_archivo,'a',newline ='') as f:
+                        archivo = csv.writer(f,delimiter=',')
+                        archivo.writerow(libro)
+                        f.close()
