@@ -333,3 +333,28 @@ if opcion == "1":
                         archivo = csv.writer(f,delimiter=',')
                         archivo.writerow(libro)
                         f.close()
+        
+        elif opcion == "10":
+            nombre_archivo= input("Ingrese el nombre del archivo nuevo (nombre.csv o nombre.txt): ")
+            with open(ruta_archivo) as f:
+                archivo =csv.reader(f)
+                datos =[]
+                for i in archivo:
+                    datos.append(i)
+                for j in datos:
+                    print(f'- {datos.index(j)} - {j[1]}')
+                f.close()
+
+            control = True    
+            while control == True:
+                
+                indice = int(input("Ingrese el numero que le corresponde al libro, para guardar o 0 para acabar: "))
+                if indice == 0:
+                    break
+                else:
+                    with open(nombre_archivo,'a',newline ='') as f:
+                        archivo = csv.writer(f,delimiter=',')
+                        archivo.writerow(datos[indice])
+
+        else:
+            break
